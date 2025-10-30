@@ -1,32 +1,22 @@
+"use client";
 import Image from "next/image";
+import { ReactNode } from "react";
+import { useState } from "react";
 
 export default function Home() {
+  return <Headline />;
+}
+
+const Headline = () => {
+  const [greeting, setGreeting] = useState("Hello function component!");
   return (
     <div>
-      <Gallery />
+      <h1>{greeting}</h1>;
+      <input
+        type="text"
+        value="greeting"
+        onChange={(event) => setGreeting(event.target.value)}
+      ></input>
     </div>
   );
-}
-
-function Profile({ AvatarProps }: AvatarProps) {
-  return <Avatar {...AvatarProps} />;
-}
-
-interface AvatarProps {
-  person: {
-    name: string;
-    imageId: string;
-  };
-  size?: number;
-}
-
-function Avatar({ person, size = 100 }: AvatarProps) {
-  return (
-    <img
-      src="https://i.imgur.com/1bX5QH6.jpg"
-      alt={person.name}
-      width={size}
-      height={size}
-    />
-  );
-}
+};
